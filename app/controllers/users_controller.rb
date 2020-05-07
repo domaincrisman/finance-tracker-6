@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def search
+    require 'iex-ruby-client'
     if params[:friend].present?
       @friends = User.search(params[:friend])
       @friends = current_user.except_current_user(@friends)
